@@ -89,7 +89,10 @@ impl iced::Application for Application {
                     self.time_rs.start();
                     self.state = State::Running;
                 }
-                State::Running => self.time_rs.stop(),
+                State::Running => {
+                    self.time_rs.stop();
+                    self.state = State::Idle;
+                }
                 State::Finished => {}
                 State::Settings => {}
             },
